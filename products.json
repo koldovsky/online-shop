@@ -1,0 +1,44 @@
+[
+    {
+        "id": "1",
+        "title": "Large drone",
+        "image": "drone-large.jpg",
+        "description": "Large drone for most critical missions. Can carry load.",
+        "price": 499.99
+    },
+    {
+        "id": "2",
+        "title": "Small drone",
+        "image": "drone-small.jpg",
+        "description": "Small drone. Can fly undetected.",
+        "price": 199.99
+    },
+    {
+        "id": "3",
+        "title": "Blue drone",
+        "image": "drone-blue.jpg",
+        "description": "Nice-looking drone in blue color. Has built-in HD camera",
+        "price": 249.99
+    },
+    {
+        "id": "4",
+        "title": "Red drone",
+        "image": "drone-red.jpg",
+        "description": "Nice-looking drone in red color",
+        "price": 229.99
+    },
+    {
+        "id": "5",
+        "title": "Black gyroboard",
+        "image": "gyroboard-black.jpg",
+        "description": "Black gyroboard to match your style",
+        "price": 729.99
+    },
+    {
+        "id": "6",
+        "title": "White gyroboard",
+        "image": "gyroboard-white.jpg",
+        "description": "White gyroboard with blue lights",
+        "price": 829.99
+    }
+]

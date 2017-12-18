@@ -6,41 +6,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Online shop Vydelka</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">-->
     <link rel="stylesheet" href="https://bootswatch.com/4/materia/bootstrap.min.css">
     <link rel="stylesheet" href="css/index.css">
 </head>
 
 <body>
-
-    <header class="container">
+    <header class="container" id="home">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" href="#">Vydelka</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
+                <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
+                        <a class="nav-link smooth" href="#home">Home<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Products</a>
+                        <a class="nav-link smooth" href="#products">Products</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Cart</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Contacts</a>
+                        <a class="nav-link smooth" href="#contacts">Contacts</a>
                     </li>
                 </ul>
+                <div>
+                    <a class="nav-link" href="#cartModal" data-toggle="modal">
+                      <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                        Cart<span id="cart-badge" class="badge badge-light"></span>
+                    </a>
+                </div>
             </div>
         </nav>
     </header>
     <main class="container">
         <div class="jumbotron">
 
-            
             <div id="carouselOffers" class="carousel slide" data-ride="carousel">
               <ol class="carousel-indicators">
                 <li data-target="#carouselOffers" data-slide-to="0" class="active"></li>
@@ -75,101 +77,88 @@
                 <span class="sr-only">Next</span>
               </a>
             </div>
-            
-            
-            
-            
-            
-            
-          
+
         </div>
-        <section>
-            <h1>
+        <section class="container">
+            <h1 id="products">
                 Products        
             </h1>
-            <div class="row">
-                <div class="card col-6 col-md-3">
-                  <img class="card-img-top" src="img/products/drone-cheerson.jpg" alt="Drone Cheerson">
-                  <div class="card-body">
-                    <h4 class="card-title">Drone Cheerson</h4>
-                    <p class="card-text">Best Drone ever</p>
-                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#productInfo">
-                          Info
-                    </button>
-                    <a href="#" class="btn btn-primary">$300 - Buy</a>
-                  </div>
-                </div>
-                <div class="card col-6 col-md-3">
-                  <img class="card-img-top" src="img/products/drone-chyrson.jpg" alt="Drone Chyrson">
-                  <div class="card-body">
-                    <h4 class="card-title">Drone Chyrson</h4>
-                    <p class="card-text">Fastest Drone ever</p>
-                    <a href="#" class="btn btn-primary">$350 - Buy</a>
-                  </div>
-                </div>
-                <div class="card col-6 col-md-3">
-                  <img class="card-img-top" src="img/products/drone-potensic.jpg" alt="Drone Potensic">
-                  <div class="card-body">
-                    <h4 class="card-title">Drone Potensic</h4>
-                    <p class="card-text">Ultimate Drone</p>
-                    <a href="#" class="btn btn-primary">$500 - Buy</a>
-                  </div>
-                </div>
-                <div class="card col-6 col-md-3">
-                  <img class="card-img-top" src="img/products/drone-syma.jpg" alt="Drone Syma">
-                  <div class="card-body">
-                    <h4 class="card-title">Drone Syma</h4>
-                    <p class="card-text">Small Drone</p>
-                    <a href="#" class="btn btn-primary">$200 - Buy</a>
-                  </div>
-                </div>
-                <div class="card col-6 col-md-3">
-                  <img class="card-img-top" src="img/products/gyroboard-eyeyourlifie.jpg" alt="Gyroboard Eyeyourlife">
-                  <div class="card-body">
-                    <h4 class="card-title">Gyroboard Eyeyourlife</h4>
-                    <p class="card-text">Best Gyroboard</p>
-                    <a href="#" class="btn btn-primary">$399 - Buy</a>
-                  </div>
-                </div>
-                <div class="card col-6 col-md-3">
-                  <img class="card-img-top" src="img/products/gyroboard-ul.jpg" alt="Gyroboard UL">
-                  <div class="card-body">
-                    <h4 class="card-title">Gyroboard UL</h4>
-                    <p class="card-text">Best Gyroboard in the Universe</p>
-                    <a href="#" class="btn btn-primary">$599 - Buy</a>
-                  </div>
-                </div>
+            <div class="row products-container">
+
             </div>
         </section>
     </main>
+    
+    <footer class="container">
+      <h2 id="contacts">Contact us</h2>
+      <p>Somewhere on the planet Earth...</p>
+    </footer>
+    
 
-
-    <!-- Modal Product Ifo -->
-    <div class="modal fade" id="productInfo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <!-- Modal Product Info -->
+    <div class="modal fade" id="productInfoModal" tabindex="-1" role="dialog" aria-labelledby="productInfoLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <h5 class="modal-title" id="productInfoLabel">Product Info</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body">
-              <img class="card-img-top" src="img/products/drone-cheerson.jpg" alt="Drone Cheerson">
-              <h4 class="card-title">Drone Cheerson</h4>
-                <p class="card-text">Best Drone ever</p>
-              </div>
+              <img class="card-img-top" src="" alt="">
+              <h4 class="card-title"></h4>
+              <p class="card-text"></p>
+          </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <a href="#" class="btn btn-primary">$300 - Buy</a>
+            <button class="btn btn-primary buy" data-id="id">Buy</button>
           </div>
         </div>
       </div>
     </div>
-
+    
+    <!-- Modal Cart -->
+    <div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="cartLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="cartLabel">Cart</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="cart-product-list-container"></div>
+            <hr>
+            <div class="container">
+              <form>
+                <div class="form-group row">
+                  <label for="client-name" class="col-4 col-form-label">Your name:</label>
+                  <input class="form-control col-8" type="text" id="client-name" required>
+                </div>
+                <div class="form-group row">
+                  <label for="client-email" class="col-4 col-form-label">Your email:</label>
+                  <input class="form-control col-8" type="email" id="client-email" required>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button class="btn btn-primary order">Order</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <script src="js/smooth-scroll.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/product-list.js"></script>    
+    <script src="js/index.js"></script>
 </body>
 
 </html>
