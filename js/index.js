@@ -1,5 +1,5 @@
 const cart = new Cart($('#cartModal'));
-const productList = new ProductList('../products.json', $('.products-container'), cart);
+const productList = new ProductList('products.json', $('.products-container'), cart);
 
 function showAlert(message, success = true) {
     const alertTemplate = 
