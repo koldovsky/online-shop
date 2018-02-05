@@ -40,7 +40,7 @@ class ProductList {
             const button = $(event.relatedTarget); // Button that triggered the modal
             const id  = String(button.data('id')); // Extract info from data-* attributes
             const product = this.getProductById(id);
-            var modal = $('#productInfoModal');
+            const modal = $('#productInfoModal');
             modal.find('.modal-body .card-img-top')
                 .attr('src', 'img/products/'+product.image)
                 .attr('alt', product.title);
@@ -50,13 +50,7 @@ class ProductList {
                 .text(`${product.price} - Buy`)
                 .data('id', id);
         });
-        $('.card.product button.buy').click( event => {
-            const button = $(event.target);
-            const id  = button.data('id'); 
-            this.cart.addProduct(id);
-            window.showAlert('Product added to cart');
-        });
-        $('#productInfoModal button.buy').click( event => {
+        $('.card.product button.buy, #productInfoModal button.buy').click( event => {
             const button = $(event.target);
             const id  = button.data('id'); 
             this.cart.addProduct(id);
