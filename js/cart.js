@@ -11,8 +11,6 @@ class Cart {
     }
     addProduct(id) {
         this.cart[id] = (this.cart[id] || 0) + 1;
-        this.saveCart();
-        this.updateBadge();
     }
     deleteProduct(id) {
         if (this.cart[id] > 1) {
@@ -20,8 +18,6 @@ class Cart {
         } else {
             delete this.cart[id];
         }
-        this.saveCart();
-        this.updateBadge();
     }
     saveCart() {
         localStorage['cart'] = JSON.stringify(this.cart);
@@ -62,6 +58,8 @@ class Cart {
         const button = $(ev.target);
         const id = button.parent().parent().data('id');
         operation.call(this, id);
+        this.saveCart();
+        this.updateBadge();
         this.renderCart();
     }
     updateBadge() {
