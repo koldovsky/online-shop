@@ -1,5 +1,9 @@
+:root {
+    scroll-behavior: smooth;
+}
+
 #carouselOffers {
-    height: 500px;
+    min-height: 500px;
 }
 
 #carouselOffers img {

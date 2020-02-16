@@ -1,27 +1,17 @@
 class Cart {
-  constructor(cartContainer) {
-    this.cartContainer = cartContainer;
+  constructor() {
+    this.cartContainer = document.querySelector('#modal-cart');
     this.cart = JSON.parse(localStorage['cart'] || '{}');
     this.addEventListeners();
     this.updateBadge();
   }
   addEventListeners() {
-    this.cartContainer.on('show.bs.modal', () => this.renderCart());
-    this.cartContainer.find('.order').click(ev => this.order(ev));
-  }
-  addProduct(id) {
-    this.cart[id] = (this.cart[id] || 0) + 1;
-    this.saveCart();
-    this.updateBadge();
-  }
-  deleteProduct(id) {
-    if (this.cart[id] > 1) {
-      this.cart[id] -= 1;
-    } else {
-      delete this.cart[id];
-    }
-    this.saveCart();
-    this.updateBadge();
+    document
+      .querySelector('.openCartLink')
+      .addEventListener('click', () => this.renderCart());
+    this.cartContainer
+      .querySelector('.order')
+      .addEventListener('click', ev => this.order(ev));
   }
   saveCart() {
     localStorage['cart'] = JSON.stringify(this.cart);
@@ -41,8 +31,8 @@ class Cart {
                     <div class="col-5">${product.title}</div>
                     <div class="col-3">${product.price}</div>
                     <div class="col-2">${this.cart[id]}</div>
-                    <div class="col-1"><button class="btn btn-sm plus">+</button></div>
-                    <div class="col-1"><button class="btn btn-sm minus">-</button></div>
+                    <div class="col-1"><button data-id=${id} class="btn btn-sm plus">+</button></div>
+                    <div class="col-1"><button data-id=${id} class="btn btn-sm minus">-</button></div>
                 </div>`;
     }
     total = total.toFixed(2);
@@ -52,28 +42,56 @@ class Cart {
                     <div class="col-3"><strong>$${total}</strong></div>
                 </div>            
         </div>`;
-    this.cartContainer.find('.cart-product-list-container').html(cartDomSting);
+    this.cartContainer.querySelector(
+      '.cart-product-list-container'
+    ).innerHTML = cartDomSting;
     this.cartContainer
-      .find('.plus')
-      .click(ev => this.changeQuantity(ev, this.addProduct));
+      .querySelectorAll('.plus')
+      .forEach(el =>
+        el.addEventListener('click', ev =>
+          this.changeQuantity(ev, this.addProduct)
+        )
+      );
     this.cartContainer
-      .find('.minus')
-      .click(ev => this.changeQuantity(ev, this.deleteProduct));
+      .querySelectorAll('.minus')
+      .forEach(el =>
+        el.addEventListener('click', ev =>
+          this.changeQuantity(ev, this.deleteProduct)
+        )
+      );
   }
   changeQuantity(ev, operation) {
-    const button = $(ev.target);
-    const id = button
-      .parent()
-      .parent()
-      .data('id');
+    const button = ev.target;
+    const id = button.dataset.id;
     operation.call(this, id);
     this.renderCart();
   }
+  addProduct(id) {
+    this.cart[id] = (this.cart[id] || 0) + 1;
+    this.saveCart();
+    this.updateBadge();
+  }
+  deleteProduct(id) {
+    if (this.cart[id] > 1) {
+      this.cart[id] -= 1;
+    } else {
+      delete this.cart[id];
+    }
+    this.saveCart();
+    this.updateBadge();
+  }
   updateBadge() {
-    $('#cart-badge').text(Object.keys(this.cart).length);
+    document.querySelector('#cart-badge').innerText = this.cartLength();
+  }
+  cartLength() {
+    return Object.keys(this.cart).length;
   }
   order(ev) {
-    const form = this.cartContainer.find('form')[0];
+    if (this.cartLength() === 0) {
+      window.showAlert('Please choose products to order', false);
+      return;
+    }    
+    const form = this.cartContainer.querySelector('.form-contacts');
     if (form.checkValidity()) {
       ev.preventDefault();
       fetch('order', {
@@ -87,7 +105,13 @@ class Cart {
           cart: this.cart
         })
       })
-        .then(response => response.text())
+        .then(response => {
+          if (response.status === 200) {
+            return response.text();
+          } else {
+            throw new Error('Cannot send form');
+          }
+        })
         .then(responseText => {
           form.reset();
           this.cart = {};
@@ -95,11 +119,12 @@ class Cart {
           this.updateBadge();
           this.renderCart();
           window.showAlert('Thank you! ' + responseText);
-          this.cartContainer.modal('hide');
+          this.cartContainer.querySelector('.btn-close').click();
+          // this.cartContainer.modal('hide');
         })
-        .catch(error => showAlert('There is an error: ' + error, true));
+        .catch(error => showAlert('There is an error: ' + error, false));
     } else {
-      window.showAlert('Please fill all fields', false);
+      window.showAlert('Please fill form correctly', false);
     }
   }
 }

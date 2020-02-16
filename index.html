@@ -20,17 +20,17 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link smooth" href="#home">Home<span class="sr-only">(current)</span></a>
+                        <a class="nav-link " href="#home">Home<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link smooth" href="#products">Products</a>
+                        <a class="nav-link " href="#products">Products</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link smooth" href="#contacts">Contacts</a>
+                        <a class="nav-link " href="#contacts">Contacts</a>
                     </li>
                 </ul>
                 <div>
-                    <a class="nav-link" href="#cartModal" data-toggle="modal">
+                    <a class="nav-link openCartLink" href="#modal-cart" data-toggle="modal">
                       <i class="fas fa-shopping-cart"></i>
                         Cart<span id="cart-badge" class="badge badge-light"></span>
                     </a>
@@ -50,7 +50,7 @@
                     <hr class="my-4">
                     <p>Buy with discount today</p>
                     <p class="lead">
-                      <a class="btn btn-primary btn-lg smooth" href="#products" role="button">Start shopping</a>
+                      <a class="btn btn-primary btn-lg " href="#products" role="button">Start shopping</a>
                     </p>
                   </div>    
                 </div>
@@ -104,7 +104,7 @@
               <p class="card-text"></p>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-secondary btn-close" data-dismiss="modal">Close</button>
             <button class="btn btn-primary buy" data-id="id">Buy</button>
           </div>
         </div>
@@ -112,7 +112,7 @@
     </div>
     
     <!-- Modal Cart -->
-    <div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="cartLabel" aria-hidden="true">
+    <div class="modal fade" id="modal-cart" tabindex="-1" role="dialog" aria-labelledby="cartLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -125,7 +125,7 @@
             <div class="cart-product-list-container"></div>
             <hr>
             <div class="container">
-              <form>
+              <form class="form-contacts">
                 <div class="form-group row">
                   <label for="client-name" class="col-4 col-form-label">Your name:</label>
                   <input class="form-control col-8" type="text" id="client-name" required>
@@ -138,20 +138,19 @@
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-secondary btn-close" data-dismiss="modal">Close</button>
             <button class="btn btn-primary order">Order</button>
           </div>
         </div>
       </div>
     </div>
-    
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.5.0/js/all.js" integrity="sha384-GqVMZRt5Gn7tB9D9q7ONtcp4gtHIUEW/yG7h98J7IpE3kpi+srfFyyB/04OV6pG0" crossorigin="anonymous"></script>
 
 
-    <script async src="js/smooth-scroll.js"></script>
     <script async src="js/alert-window.js"></script>
     <script defer src="js/cart.js"></script>
     <script defer src="js/product-list.js"></script>    
