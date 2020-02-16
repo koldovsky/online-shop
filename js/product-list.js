@@ -2,20 +2,16 @@ class ProductList {
   constructor(cart) {
     this.cart = cart;
     this.container = document.querySelector('.products-container');
-    fetch('products.json')
-      .then(result => result.json())
-      .then(products => {
-        this.products = products;
-        this.renderProducts();
-        this.addEventListeners();
-      });
+    this.productService = new ProductsService();
+    this.productService
+      .getProducts()
+      .then(() => this.renderProducts())
+      .then(() => this.addEventListeners());    
   }
-  getProductById(id) {
-    return this.products.find(el => el.id === id);
-  }
-  renderProducts() {
+  async renderProducts() {
     let productListDomString = '';
-    this.products.forEach(product => {
+    const products = await this.productService.getProducts();
+    products.forEach(product => {
       productListDomString += `<div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3">
                   <div class="card product">
                     <img class="card-img-top" src="img/products/${product.image}" 
@@ -39,20 +35,24 @@ class ProductList {
     document
       .querySelectorAll('.product .btn-info')
       .forEach(button =>
-        button.addEventListener('click', event => this.handleProductInfoClick(event))
+        button.addEventListener('click', event =>
+          this.handleProductInfoClick(event)
+        )
       );
     document
       .querySelectorAll(
         '.card.product button.buy, #productInfoModal button.buy'
       )
       .forEach(button =>
-        button.addEventListener('click', event => this.handleProductBuyClick(event))
+        button.addEventListener('click', event =>
+          this.handleProductBuyClick(event)
+        )
       );
   }
-  handleProductInfoClick(event) {
+  async handleProductInfoClick(event) {
     const button = event.target; // Button that triggered the modal
     const id = button.dataset.id; // Extract info from data-* attributes
-    const product = this.getProductById(id);
+    const product = await this.productService.getProductById(id);
     const modal = document.querySelector('#productInfoModal');
     const productImg = modal.querySelector('.modal-body .card-img-top');
     productImg.setAttribute('src', 'img/products/' + product.image);

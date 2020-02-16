@@ -1,1 +1,1 @@
-const productList = new ProductList(new Cart());
+new ProductList(new Cart());

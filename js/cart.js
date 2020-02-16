@@ -4,6 +4,7 @@ class Cart {
     this.cart = JSON.parse(localStorage['cart'] || '{}');
     this.addEventListeners();
     this.updateBadge();
+    this.productService = new ProductsService();
   }
   addEventListeners() {
     document
@@ -16,7 +17,7 @@ class Cart {
   saveCart() {
     localStorage['cart'] = JSON.stringify(this.cart);
   }
-  renderCart() {
+  async renderCart() {
     let total = 0;
     let cartDomSting = `<div class="container">
                 <div class="row">
@@ -25,7 +26,7 @@ class Cart {
                     <div class="col-2"><strong>Quantity</strong></div>
                 </div>`;
     for (const id in this.cart) {
-      const product = productList.getProductById(id);
+      const product = await this.productService.getProductById(id);
       total += product.price * this.cart[id];
       cartDomSting += `<div class="row" data-id="${id}"> 
                     <div class="col-5">${product.title}</div>
@@ -120,7 +121,6 @@ class Cart {
           this.renderCart();
           window.showAlert('Thank you! ' + responseText);
           this.cartContainer.querySelector('.btn-close').click();
-          // this.cartContainer.modal('hide');
         })
         .catch(error => showAlert('There is an error: ' + error, false));
     } else {
