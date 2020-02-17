@@ -16,15 +16,17 @@ class ProductList {
                   <div class="card product">
                     <img class="card-img-top" src="img/products/${product.image}" 
                         alt="${product.title}">
-                    <div class="card-body">
+                    <div class="card-body d-flex flex-column">
                       <h4 class="card-title">${product.title}</h4>
-                      <p class="card-text">${product.description}</p>
-                      <button class="btn btn-info" data-toggle="modal"
-                        data-target="#productInfoModal" data-id="${product.id}">Info
-                      </button>
-                      <button class="btn btn-primary buy" data-id="${product.id}">
-                        $${product.price} - Buy
-                      </button>
+                      <p class="card-text flex-fill">${product.description}</p>
+                      <div class="d-flex justify-content-around">
+                        <button class="btn btn-info" data-toggle="modal"
+                          data-target="#productInfoModal" data-id="${product.id}">Info
+                        </button>
+                        <button class="btn btn-primary buy" data-id="${product.id}">
+                          $${product.price} - Buy
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>`;
