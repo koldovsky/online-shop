@@ -11,7 +11,11 @@ class ProductList {
   async renderProducts() {
     let productListDomString = '';
     const products = await this.productService.getProducts();
-    products.forEach(product => {
+    [...products]
+      .sort( (a, b) => this.sortDirection === 'ascending' 
+                         ? a.price - b.price
+                         : b.price - a.price)
+      .forEach(product => {
       productListDomString += `<div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3">
                   <div class="card product">
                     <img class="card-img-top" src="img/products/${product.image}" 
@@ -50,6 +54,14 @@ class ProductList {
           this.handleProductBuyClick(event)
         )
       );
+    document.querySelector('.sort-asc').addEventListener('click', () => {
+        this.sortDirection = 'ascending';
+        this.renderProducts();
+    });
+    document.querySelector('.sort-desc').addEventListener('click', () => {
+        this.sortDirection = 'descending';
+        this.renderProducts();
+    });
   }
   async handleProductInfoClick(event) {
     const button = event.target; // Button that triggered the modal
