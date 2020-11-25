@@ -37,7 +37,7 @@ class ProductList {
     });
     this.container.innerHTML = productListDomString;
   }
-  addEventListeners() {
+  async addEventListeners() {
     document
       .querySelectorAll('.product .btn-info')
       .forEach(button =>
@@ -54,14 +54,14 @@ class ProductList {
           this.handleProductBuyClick(event)
         )
       );
-    document.querySelector('.sort-asc').addEventListener('click', () => {
+    document.querySelector('.sort-asc').addEventListener('click', async () => {
         this.sortDirection = 'ascending';
-        this.renderProducts();
+        await this.renderProducts();
         this.addEventListeners();
     });
-    document.querySelector('.sort-desc').addEventListener('click', () => {
+    document.querySelector('.sort-desc').addEventListener('click', async () => {
         this.sortDirection = 'descending';
-        this.renderProducts();
+        await this.renderProducts();
         this.addEventListeners();
     });
   }

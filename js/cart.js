@@ -1,10 +1,10 @@
 class Cart {
   constructor() {
+    this.productService = new ProductsService();
     this.cartContainer = document.querySelector('#modal-cart');
     this.cart = JSON.parse(localStorage['cart'] || '{}');
     this.addEventListeners();
     this.updateBadge();
-    this.productService = new ProductsService();
   }
   addEventListeners() {
     document
@@ -81,14 +81,27 @@ class Cart {
     this.saveCart();
     this.updateBadge();
   }
-  updateBadge() {
-    document.querySelector('#cart-badge').innerText = this.cartLength();
+  async updateBadge() {
+    const {count, cost } = await this.cartLengthAndCost(); 
+    document.querySelector('#cart-badge').innerText = `${count} $${cost}`;
   }
-  cartLength() {
-    return Object.keys(this.cart).length;
+  async cartLengthAndCost() {
+    // return Object.keys(this.cart).length;
+    let count = 0;
+    let cost = 0;
+    // const productService = new ProductsService();
+    for (const key in this.cart) {
+        const product = await this.productService.getProductById(key);
+        const quantity = this.cart[key]; 
+        count += quantity;
+        cost += quantity * product.price;
+    }
+    return {
+        count, cost
+    };
   }
   order(ev) {
-    if (this.cartLength() === 0) {
+    if (this.cartLengthAndCost().count === 0) {
       window.showAlert('Please choose products to order', false);
       return;
     }    
