@@ -57,10 +57,12 @@ class ProductList {
     document.querySelector('.sort-asc').addEventListener('click', () => {
         this.sortDirection = 'ascending';
         this.renderProducts();
+        this.addEventListeners();
     });
     document.querySelector('.sort-desc').addEventListener('click', () => {
         this.sortDirection = 'descending';
         this.renderProducts();
+        this.addEventListeners();
     });
   }
   async handleProductInfoClick(event) {
