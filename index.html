@@ -6,16 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Online shop Stickerz</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">    
     <link rel="stylesheet" href="css/index.css">
     <link rel="icon" href="img/products/baby-yoda.svg">
 </head>
 
 <body>
     <header class="container" id="home">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <a class="navbar-brand" href="#">Stickerz</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -31,7 +31,7 @@
                     </li>
                 </ul>
                 <div>
-                    <a class="nav-link openCartLink" href="#modal-cart" data-toggle="modal">
+                    <a class="nav-link openCartLink" href="#modal-cart" data-bs-toggle="modal">
                       <i class="fas fa-shopping-cart"></i>
                         Cart<span id="cart-badge" class="badge badge-light"></span>
                     </a>
@@ -42,7 +42,7 @@
     <main class="container">
         <div class="jumbotron">
             
-            <div id="carouselOffers" class="carousel slide" data-ride="carousel">
+            <div id="carouselOffers" class="carousel slide" data-bs-ride="carousel">
               <div class="carousel-inner">
                 <div class="carousel-item active">
                   <div class="intro mx-auto">
@@ -63,11 +63,11 @@
                 </div>
                 <!-- Todo: Dynamically add items here --> 
               </div>
-              <a class="carousel-control-prev" href="#carouselOffers" role="button" data-slide="prev">
+              <a class="carousel-control-prev" href="#carouselOffers" role="button" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="sr-only">Previous</span>
               </a>
-              <a class="carousel-control-next" href="#carouselOffers" role="button" data-slide="next">
+              <a class="carousel-control-next" href="#carouselOffers" role="button" data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="sr-only">Next</span>
               </a>
@@ -77,8 +77,8 @@
         </div>
         <section>
             <h2 id="products">Products</h2>
-            <button class="sort-asc">Sort Ascending</button>
-            <button class="sort-desc">Button Descending</button>
+            <button class="sort-asc btn">Sort Ascending</button>
+            <button class="sort-desc btn">Button Descending</button>
             <div class="row products-container">
                <!--Products are dynamically generated here-->
             </div>
@@ -97,7 +97,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="productInfoLabel">Product Info</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
@@ -107,7 +107,7 @@
               <p class="card-text"></p>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary btn-close" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             <button class="btn btn-primary buy" data-id="id">Buy</button>
           </div>
         </div>
@@ -120,7 +120,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="cartLabel">Cart</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
@@ -141,15 +141,16 @@
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary btn-close" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             <button class="btn btn-primary order">Order</button>
           </div>
         </div>
       </div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    <div class="alert-container"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.5.0/js/all.js" integrity="sha384-GqVMZRt5Gn7tB9D9q7ONtcp4gtHIUEW/yG7h98J7IpE3kpi+srfFyyB/04OV6pG0" crossorigin="anonymous"></script>
 
 

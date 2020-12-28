@@ -24,8 +24,8 @@ class ProductList {
                       <h4 class="card-title">${product.title}</h4>
                       <p class="card-text flex-fill">${product.description}</p>
                       <div class="d-flex justify-content-around">
-                        <button class="btn btn-info" data-toggle="modal"
-                          data-target="#productInfoModal" data-id="${product.id}">Info
+                        <button class="btn btn-info" data-bs-toggle="modal"
+                          data-bs-target="#productInfoModal" data-id="${product.id}">Info
                         </button>
                         <button class="btn btn-primary buy" data-id="${product.id}">
                           $${product.price} - Buy
