@@ -3,6 +3,7 @@ class ProductList {
     this.cart = cart;
     this.container = document.querySelector('.products-container');
     this.productService = new ProductsService();
+    this.sortDirection = 'ascending';
     this.productService
       .getProducts()
       .then(() => this.renderProducts())
