@@ -133,7 +133,7 @@ class Cart {
           this.updateBadge();
           this.renderCart();
           window.showAlert('Thank you! ' + responseText);
-          this.cartContainer.querySelector('.btn-close').click();
+          this.cartContainer.querySelector('.close-btn').click();
         })
         .catch(error => showAlert('There is an error: ' + error, false));
     } else {
