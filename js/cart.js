@@ -100,8 +100,8 @@ class Cart {
         count, cost
     };
   }
-  order(ev) {
-    if (this.cartLengthAndCost().count === 0) {
+  async order(ev) {
+    if ((await this.cartLengthAndCost()).count === 0) {
       window.showAlert('Please choose products to order', false);
       return;
     }    
