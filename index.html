@@ -78,6 +78,7 @@
             <h2 id="products">Products</h2>
             <button class="sort-asc btn">Sort Ascending</button>
             <button class="sort-desc btn">Button Descending</button>
+            <input type="text" class="search">
             <div class="row products-container">
                <!--Products are dynamically generated here-->
             </div>
@@ -92,7 +93,7 @@
 
     <!-- Modal Product Info -->
     <div class="modal fade" id="productInfoModal" tabindex="-1" role="dialog" aria-labelledby="productInfoLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
+      <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="productInfoLabel">Product Info</h5>
@@ -101,13 +102,26 @@
             </button>
           </div>
           <div class="modal-body">
-              <img class="card-img-top" src="" alt="">
+             <div id="carouselProductInfo" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img src="..." class="d-block w-100 image-one" alt="...">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="..." class="d-block w-100 image-two" alt="...">
+                  </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselProductInfo" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselProductInfo" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
               <h4 class="card-title"></h4>
               <p class="card-text"></p>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button class="btn btn-primary buy" data-id="id">Buy</button>
           </div>
         </div>
       </div>

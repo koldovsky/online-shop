@@ -7,19 +7,25 @@ class ProductList {
     this.productService
       .getProducts()
       .then(() => this.renderProducts())
-      .then(() => this.addEventListeners());    
+      .then(() => this.addEventListeners()); 
+    document.querySelector('.search').addEventListener('keydown', async () => {
+      await this.renderProducts();
+      this.addEventListeners();
+    });   
   }
   async renderProducts() {
+    const searchInput = document.querySelector('.search');
     let productListDomString = '';
     const products = await this.productService.getProducts();
     [...products]
+      .filter( product => product.title.includes(searchInput.value) )
       .sort( (a, b) => this.sortDirection === 'ascending' 
                          ? a.price - b.price
                          : b.price - a.price)
       .forEach(product => {
       productListDomString += `<div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3">
                   <div class="card product">
-                    <img class="card-img-top" src="img/products/${product.image}" 
+                    <img class="card-img-top" src="${product.image}" 
                         alt="${product.title}">
                     <div class="card-body d-flex flex-column">
                       <h4 class="card-title">${product.title}</h4>
@@ -71,9 +77,12 @@ class ProductList {
     const id = button.dataset.id; // Extract info from data-* attributes
     const product = await this.productService.getProductById(id);
     const modal = document.querySelector('#productInfoModal');
-    const productImg = modal.querySelector('.modal-body .card-img-top');
-    productImg.setAttribute('src', 'img/products/' + product.image);
-    productImg.setAttribute('alt', product.title);
+    const productImg1 = modal.querySelector('.modal-body .image-one');
+    productImg1.setAttribute('src', product.additionalImages[0]);
+    productImg1.setAttribute('alt', product.additionalImages[0]);
+    const productImg2 = modal.querySelector('.modal-body .image-two');
+    productImg2.setAttribute('src', product.additionalImages[1]);
+    productImg2.setAttribute('alt', product.additionalImages[1]);
     modal.querySelector('.modal-body .card-title').innerText = product.title;
     modal.querySelector('.modal-body .card-text').innerText =
       product.description;
