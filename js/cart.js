@@ -36,11 +36,10 @@ class Cart {
                     <div class="col-1"><button data-id=${id} class="btn btn-sm minus">-</button></div>
                 </div>`;
     }
-    total = total.toFixed(2);
     cartDomSting += `
                 <div class="row">
                     <div class="col-5"><strong>TOTAL</strong></div>
-                    <div class="col-3"><strong>$${total}</strong></div>
+                    <div class="col-3"><strong>$${total.toFixed(2)}</strong></div>
                 </div>            
         </div>`;
     this.cartContainer.querySelector(
