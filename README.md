@@ -1,4 +1,4 @@
-https://koldovsky.github.io/online-shop/
+Hosting link: https://koldovsky.github.io/online-shop/
 
 To run:
 1. Install dependencies: `npm i`
